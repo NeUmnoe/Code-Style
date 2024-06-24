@@ -11,6 +11,7 @@ public class Shooter : MonoBehaviour
     private bool _isShooting = true;
     private Coroutine _shootingCoroutine;
     private WaitForSeconds _shootInterval;
+
     private void Start()
     {
         _shootInterval = new WaitForSeconds(_intervalToShot);
@@ -51,10 +52,6 @@ public class Shooter : MonoBehaviour
         Vector3 direction = (_targetToShot.position - transform.position).normalized;
         Bullet newBullet = Instantiate(_bulletPrefab, transform.position + direction, Quaternion.identity);
 
-        if(newBullet.TryGetComponent<Rigidbody>(out Rigidbody bulletRigidbody))
-        {
-        bulletRigidbody.transform.up = direction;
-        bulletRigidbody.velocity = direction * _bulletSpeed;
-        }
+        newBullet.Initialize();
     }
 }

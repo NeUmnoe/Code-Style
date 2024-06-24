@@ -5,7 +5,7 @@ public class Mover : MonoBehaviour
     [SerializeField] private float _speed = 1f;
     [SerializeField] private Transform[] _waypoints;
 
-    private const float _reachThreshold = 0.01f;
+    private float _reachThreshold = 0.01f;
     private int _currentWaypointIndex = 0;
     private Transform _currentTargetWaypoint;
 
